@@ -14,7 +14,7 @@ class _JogoState extends State<Jogo> {
 
   void _opcaoSelecionada(String escolhaUsuario) {
     var opcoesJogador = ['pedra', 'papel', 'tesoura'];
-    var numeroApp = Random().nextInt(3);
+    var numeroApp = Random().nextInt(opcoesJogador.length);
     var escolhaApp = opcoesJogador[numeroApp];
 
     // Dada a seleção randômica para o App, setar a imagem da sua escolha
