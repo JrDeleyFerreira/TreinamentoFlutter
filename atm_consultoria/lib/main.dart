@@ -8,6 +8,17 @@ void main() {
   runApp(MaterialApp(
     home: HomePageATM(),
     debugShowCheckedModeBanner: false,
+
+    /** USANDO ROTAS NOMEADAS - Prefira isolar o HomePageATM nesse caso:
+     * routes: {
+      '/': (context) => HomePageATM(),
+      '/emp': (context) => TelaEmpresa(),
+      '/serv': (context) => TelaServico(),
+      '/cli': (context) => TelaCliente(),
+      '/ctt': (context) => TelaContato()
+    },
+    initialRoute: '/',
+    */
   ));
 }
 
@@ -88,5 +99,20 @@ class _HomePageATMState extends State<HomePageATM> {
             context, MaterialPageRoute(builder: (context) => TelaContato()));
         break;
     }
+
+    /**
+     * case 'empresa':
+        Navigator.pushNamed(context, '/emp');
+        break;
+       case 'servico':
+        Navigator.pushNamed(context, '/serv');
+        break;
+       case 'cliente':
+        Navigator.pushNamed(context, '/cli');
+        break;
+       case 'contato':
+        Navigator.pushNamed(context, '/ctt');
+        break;
+     */
   }
 }
