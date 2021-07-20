@@ -100,7 +100,7 @@ class _HomePageATMState extends State<HomePageATM> {
         break;
     }
 
-    /**
+    /** CASO UTILIZE AS ROTAS NOMEADAS:
      * case 'empresa':
         Navigator.pushNamed(context, '/emp');
         break;
