@@ -21,11 +21,16 @@ class _CampoTextoState extends State<CampoTexto> {
             child: TextField(
               //text, number, emailAddress, datetime
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: "Digite um valor"),
+              decoration: InputDecoration(
+                labelText: "Digite um valor",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              style: TextStyle(fontSize: 50, color: Colors.green),
               //enabled: false,
               //maxLength: 2,
               //maxLengthEnforced: false,
-              style: TextStyle(fontSize: 50, color: Colors.green),
               //obscureText: true,
               /*
               onChanged: (String texto){
