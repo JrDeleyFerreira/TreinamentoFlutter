@@ -15,6 +15,12 @@ void main() async {
     'idade': 31,
   });
 
+  /// Atualizando dados no banco
+  banco.collection('collectionPath').doc('FirebaseAuth.id').update({
+    'nome': 'Wanderley',
+    'idade': 31,
+  });
+
   /// Salvando informações com id automático do Firebase
   DocumentReference ref = await banco.collection("noticias").add({
     'nome': 'Wanderley',
@@ -32,10 +38,9 @@ void main() async {
 
   /// Recuperando todos os itens de uma tabela
   //var listagem = await banco.namedQueryGet('collectionPath');
+  List<String> listaFinal = [];
   var listagem = await banco.collection('collectionPath').get();
-  listagem.docs.forEach((element) {
-    print(element.data().toString());
-  });
+  listagem.docs.forEach((element) => listaFinal.add(element['nome']));
 
   /// Cria um ouvinte que sincroniza informações automaticamente
   banco.collection('collectionPath').snapshots().listen((event) => event.docs);
