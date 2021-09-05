@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -79,10 +81,37 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var banco = FirebaseFirestore.instance;
+  final _controllerStream = StreamController<QuerySnapshot>.broadcast();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: null,
+    return StreamBuilder<QuerySnapshot<Object?>>(
+      stream: _controllerStream.stream,
+      builder: (context, snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.none:
+          case ConnectionState.active:
+          case ConnectionState.waiting:
+            return Center(child: CircularProgressIndicator());
+          case ConnectionState.done:
+            return Center(child: CircularProgressIndicator());
+        }
+      },
     );
+  }
+
+  Stream<QuerySnapshot<Object?>> _adicionarListener() {
+    final stream = banco
+        .collection('collectionPath')
+        .doc('idUsuario')
+        .collection('collectionPath2')
+        .snapshots();
+    stream.listen((event) => _controllerStream.add(event));
+  }
+
+  @override
+  void dispose() {
+    _controllerStream.close();
+    super.dispose();
   }
 }
