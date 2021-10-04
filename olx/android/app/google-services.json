@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "667963922946",
+    "firebase_url": "https://olx-app-53b7f.firebaseio.com",
+    "project_id": "olx-app-53b7f",
+    "storage_bucket": "olx-app-53b7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667963922946:android:10e2a1b97299f25fa2e51b",
+        "android_client_info": {
+          "package_name": "com.cursoflutter.olx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667963922946-b99m047gmrgeq22pgbhvnkeju3kgs3do.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSWp681fc7fRIJ7UqCqnkpnD7O2SN1TiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667963922946-b99m047gmrgeq22pgbhvnkeju3kgs3do.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
