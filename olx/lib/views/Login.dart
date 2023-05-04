@@ -10,69 +10,59 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-
-  TextEditingController _controllerEmail = TextEditingController(text: "jamilton@gmail.com");
-  TextEditingController _controllerSenha = TextEditingController(text: "1234567");
+  TextEditingController _controllerEmail =
+      TextEditingController(text: "jamilton@gmail.com");
+  TextEditingController _controllerSenha =
+      TextEditingController(text: "1234567");
 
   bool _cadastrar = false;
   String _mensagemErro = "";
   String _textoBotao = "Entrar";
 
-  _cadastrarUsuario(Usuario usuario){
-
+  _cadastrarUsuario(Usuario usuario) {
     FirebaseAuth auth = FirebaseAuth.instance;
 
-    auth.createUserWithEmailAndPassword(
-        email: usuario.email,
-        password: usuario.senha
-    ).then((firebaseUser){
-
+    auth
+        .createUserWithEmailAndPassword(
+            email: usuario.email, password: usuario.senha)
+        .then((firebaseUser) {
       //redireciona para tela principal
       Navigator.pushReplacementNamed(context, "/");
-
     });
-
   }
 
-  _logarUsuario(Usuario usuario){
-
+  _logarUsuario(Usuario usuario) {
     FirebaseAuth auth = FirebaseAuth.instance;
 
-    auth.signInWithEmailAndPassword(
-        email: usuario.email,
-        password: usuario.senha
-    ).then((firebaseUser){
-
+    auth
+        .signInWithEmailAndPassword(
+            email: usuario.email, password: usuario.senha)
+        .then((firebaseUser) {
       //redireciona para tela principal
       Navigator.pushReplacementNamed(context, "/");
-
     });
-
   }
 
   _validarCampos() {
-
     //Recupera dados dos campos
     String email = _controllerEmail.text;
     String senha = _controllerSenha.text;
 
     if (email.isNotEmpty && email.contains("@")) {
       if (senha.isNotEmpty && senha.length > 6) {
-
         //Configura usuario
         Usuario usuario = Usuario();
         usuario.email = email;
         usuario.senha = senha;
 
         //cadastrar ou logar
-        if( _cadastrar ){
+        if (_cadastrar) {
           //Cadastrar
           _cadastrarUsuario(usuario);
-        }else{
+        } else {
           //Logar
           _logarUsuario(usuario);
         }
-
       } else {
         setState(() {
           _mensagemErro = "Preencha a senha! digite mais de 6 caracteres";
@@ -83,7 +73,6 @@ class _LoginState extends State<Login> {
         _mensagemErro = "Preencha o E-mail válido";
       });
     }
-
   }
 
   @override
@@ -102,7 +91,7 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: EdgeInsets.only(bottom: 32),
                   child: Image.asset(
-                      "imagens/logo.png",
+                    "imagens/logo.png",
                     width: 200,
                     height: 150,
                   ),
@@ -114,21 +103,18 @@ class _LoginState extends State<Login> {
                   type: TextInputType.emailAddress,
                 ),
                 InputCustomizado(
-                  controller: _controllerSenha,
-                  hint: "Senha",
-                  obscure: true
-                ),
+                    controller: _controllerSenha, hint: "Senha", obscure: true),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text("Logar"),
                     Switch(
                       value: _cadastrar,
-                      onChanged: (bool valor){
+                      onChanged: (bool valor) {
                         setState(() {
                           _cadastrar = valor;
                           _textoBotao = "Entrar";
-                          if( _cadastrar ){
+                          if (_cadastrar) {
                             _textoBotao = "Cadastrar";
                           }
                         });
@@ -139,25 +125,28 @@ class _LoginState extends State<Login> {
                 ),
                 BotaoCustomizado(
                   texto: _textoBotao,
-                  onPressed: (){
+                  onPressed: () {
                     _validarCampos();
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text("Ir para anúncios"),
-                  onPressed: (){
+                  onPressed: () {
                     Navigator.pushReplacementNamed(context, "/");
                   },
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child: Text(_mensagemErro, style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red
-                  ),),
+                  child: Text(
+                    _mensagemErro,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red),
+                  ),
                 )
-            ],),
+              ],
+            ),
           ),
         ),
       ),

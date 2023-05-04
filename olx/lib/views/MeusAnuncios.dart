@@ -116,7 +116,7 @@ class _MeusAnunciosState extends State<MeusAnuncios> {
                                 content:
                                     Text("Deseja realmente excluir o anúncio?"),
                                 actions: <Widget>[
-                                  FlatButton(
+                                  TextButton(
                                     child: Text(
                                       "Cancelar",
                                       style: TextStyle(color: Colors.grey),
@@ -125,8 +125,11 @@ class _MeusAnunciosState extends State<MeusAnuncios> {
                                       Navigator.of(context).pop();
                                     },
                                   ),
-                                  FlatButton(
-                                    color: Colors.red,
+                                  TextButton(
+                                    style: ButtonStyle(
+                                        foregroundColor:
+                                            MaterialStateProperty.all(
+                                                Colors.red)),
                                     child: Text(
                                       "Remover",
                                       style: TextStyle(color: Colors.white),

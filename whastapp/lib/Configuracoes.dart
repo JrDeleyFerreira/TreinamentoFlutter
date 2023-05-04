@@ -139,13 +139,13 @@ class _ConfiguracoesState extends State<Configuracoes> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    FlatButton(
+                    TextButton(
                       child: Text("Câmera"),
                       onPressed: () {
                         _recuperarImagem("camera");
                       },
                     ),
-                    FlatButton(
+                    TextButton(
                       child: Text("Galeria"),
                       onPressed: () {
                         _recuperarImagem("galeria");
@@ -174,15 +174,17 @@ class _ConfiguracoesState extends State<Configuracoes> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 16, bottom: 10),
-                  child: RaisedButton(
+                  child: ElevatedButton(
                       child: Text(
                         "Salvar",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      color: Colors.green,
-                      padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(32)),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.green,
+                        padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32)),
+                      ),
                       onPressed: () {
                         _atualizarNomeFirestore();
                       }),

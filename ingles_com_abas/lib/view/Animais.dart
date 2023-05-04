@@ -12,7 +12,7 @@ class _AnimaisState extends State<Animais> {
   final _audioCache = AudioCache(prefix: 'audios/');
 
   _executarSom(String nomeSom) {
-    _audioCache.play(nomeSom + '.mp3');
+    _audioCache.play(AssetSource(nomeSom + '.mp3'));
   }
 
   @override

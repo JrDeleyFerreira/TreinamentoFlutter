@@ -128,15 +128,17 @@ class _LoginState extends State<Login> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 16, bottom: 10),
-                  child: RaisedButton(
+                  child: ElevatedButton(
                       child: Text(
                         "Entrar",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
-                      color: Colors.green,
-                      padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(32)),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.green,
+                        padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32)),
+                      ),
                       onPressed: () {
                         _validarCampos();
                       }),

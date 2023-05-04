@@ -107,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
         .collection('collectionPath2')
         .snapshots();
     stream.listen((event) => _controllerStream.add(event));
+    return stream;
   }
 
   @override

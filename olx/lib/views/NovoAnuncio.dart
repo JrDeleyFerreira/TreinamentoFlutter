@@ -202,9 +202,13 @@ class _NovoAnuncioState extends State<NovoAnuncio> {
                                                     children: <Widget>[
                                                       Image.file(_listaImagens[
                                                           indice]),
-                                                      FlatButton(
+                                                      TextButton(
                                                         child: Text("Excluir"),
-                                                        textColor: Colors.red,
+                                                        style: ButtonStyle(
+                                                            foregroundColor:
+                                                                MaterialStateProperty
+                                                                    .all(Colors
+                                                                        .red)),
                                                         onPressed: () {
                                                           setState(() {
                                                             _listaImagens
@@ -330,7 +334,7 @@ class _NovoAnuncioState extends State<NovoAnuncio> {
                     type: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
-                      RealInputFormatter(centavos: true)
+                      RealInputFormatter(moeda: true)
                     ],
                     validator: (valor) {
                       return Validador()
