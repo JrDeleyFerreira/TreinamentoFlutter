@@ -9,16 +9,18 @@ class Numeros extends StatefulWidget {
 }
 
 class _NumerosState extends State<Numeros> {
-  final _audioCache = AudioCache(prefix: 'audios/');
+  final _audioPlayer = AudioPlayer();
+  var _cachePlayer = AudioCache();
 
   _executarSom(String nomeSom) {
-    _audioCache.play(nomeSom + '.mp3');
+    _cachePlayer = (_audioPlayer.audioCache.prefix = 'audios/') as AudioCache;
+    _audioPlayer.play(AssetSource(nomeSom + '.mp3'));
   }
 
   @override
   void initState() {
     super.initState();
-    _audioCache.loadAll([
+    _cachePlayer.loadAll([
       '1.mp3',
       '2.mp3',
       '3.mp3',

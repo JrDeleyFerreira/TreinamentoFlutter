@@ -20,8 +20,7 @@ class _HomeState extends State<Home> {
 
   _executarSomUrl() async {
     var url = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3';
-    var resultado = await audioPlayer.play(url);
-    resultado == 1 ? print('SUCESSO') : print('Fracasso');
+    await audioPlayer.play(AssetSource(url));
   }
 
   //static var playerCache = AudioCache();
@@ -29,7 +28,7 @@ class _HomeState extends State<Home> {
     audioPlayer.setVolume(volume);
 
     if (primeiraExecucao) {
-      audioPlayer = await playerCache.play('musica.mp3');
+      await audioPlayer.play(AssetSource('musica.mp3'));
       primeiraExecucao = false;
     } else {
       audioPlayer.resume();

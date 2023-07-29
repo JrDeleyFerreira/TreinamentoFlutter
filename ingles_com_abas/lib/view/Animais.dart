@@ -9,16 +9,18 @@ class Animais extends StatefulWidget {
 }
 
 class _AnimaisState extends State<Animais> {
-  final _audioCache = AudioCache(prefix: 'audios/');
+  final _audioPlayer = AudioPlayer();
+  var _cachePlayer = AudioCache();
 
   _executarSom(String nomeSom) {
-    _audioCache.play(AssetSource(nomeSom + '.mp3'));
+    _cachePlayer = (_audioPlayer.audioCache.prefix = 'audios/') as AudioCache;
+    _audioPlayer.play(AssetSource(nomeSom + '.mp3'));
   }
 
   @override
   void initState() {
     super.initState();
-    _audioCache.loadAll([
+    _cachePlayer.loadAll([
       'cao.mp3',
       'gato.mp3',
       'leao.mp3',
